@@ -1,31 +1,20 @@
-#OOP- Project 
+Banking System: Inheritance Project
+Overview
+This is a Python project created for my computer science coursework to demonstrate Object-Oriented Programming (OOP) concepts. The goal was to build a base banking system and then create a specialized savings account with specific rules.
 
+Features
+Parent Class (Account): Handles the basic attributes like the account owner and the balance.
 
-class Account:
-    def __init__(self, owner, balance):
-        self.owner = owner
-        self.balance = balance
+Child Class (SavingsAccount): Inherits from the Account class.
 
-    def withdraw(self, amount):
-        self.balance = self.balance - amount
-        print("Withdrawal successful. New balance:", self.balance)
+Custom Attributes: Added a $100 withdrawal limit specifically for savings accounts.
 
-class SavingsAccount(Account):
-    def __init__(self, owner, balance):
-        # Link to the parent class
-        Account.__init__(self, owner, balance)
-        
-        # 1) Add an attribute called withdraw limit of $100
-        self.withdraw_limit = 100
+Method Overriding: Overrode the default withdraw behavior to enforce the $100 limit rule.
 
-    # 2) Override the withdrawal behavior
-    def withdraw(self, amount):
-        # The withdrawal amount should not be more than the withdrawal limit
-        if amount <= self.withdraw_limit:
-            Account.withdraw(self, amount)
-        else:
-            print("Error: You cannot withdraw more than $100")
+Requirements
+Add an attribute called withdraw_limit of $100 to the savings amount.
 
-# Test the code
-savings = SavingsAccount("Alice", 5000)
-savings.withdraw(27.8)
+Override the withdrawal behavior so that the withdrawal amount cannot be more than the withdrawal limit.
+
+How it Works
+When a user tries to withdraw money from a SavingsAccount, the code first checks if the amount is less than or equal to $100. If it is, the transaction proceeds; otherwise, an error message is displayed.
